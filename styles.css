@@ -1,0 +1,332 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --orange: #ff6b00;
+  --blue: #4fc3f7;
+  --white: #ffffff;
+  --gray: #b0b0b0;
+  --bg: #0a0a0a;
+  --card-bg: #111111;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--white);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20px 60px;
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 40px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: var(--gray);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding-bottom: 6px;
+  position: relative;
+  transition: color 0.3s;
+}
+
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 2px;
+  background: var(--orange);
+  transition: width 0.3s;
+}
+
+nav ul li a:hover { color: var(--white); }
+nav ul li a:hover::after { width: 100%; }
+
+nav ul li a.active { color: var(--white); }
+nav ul li a.active::after { width: 100%; }
+
+/* ── HERO ── */
+#home {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 60px 60px;
+  gap: 80px;
+}
+
+.profile-side {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-wrapper {
+  position: relative;
+  width: 280px;
+  height: 280px;
+}
+
+.profile-wrapper img {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--orange);
+  box-shadow: 0 0 30px rgba(255, 107, 0, 0.4), 0 0 60px rgba(255, 107, 0, 0.15);
+  display: block;
+}
+
+.profile-ring {
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  border: 2px dashed rgba(255, 107, 0, 0.3);
+  animation: spin 12s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.text-side {
+  flex: 1;
+  max-width: 560px;
+}
+
+.greeting {
+  font-size: 1rem;
+  color: var(--gray);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.main-heading {
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.main-heading .orange { color: var(--orange); }
+
+.main-heading .glow {
+  color: var(--white);
+  text-shadow:
+    0 0 8px rgba(255, 255, 255, 0.6),
+    0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.subtitle {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.subtitle .blue { color: var(--blue); }
+
+.bio {
+  font-size: 0.95rem;
+  color: var(--gray);
+  line-height: 1.8;
+  max-width: 460px;
+  margin-bottom: 36px;
+}
+
+/* ── SOCIAL ICONS ── */
+.socials {
+  display: flex;
+  gap: 16px;
+}
+
+.socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  color: var(--gray);
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.socials a:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(255, 107, 0, 0.25);
+}
+
+/* ── SKILLS ── */
+#skill {
+  min-height: 100vh;
+  padding: 100px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.section-title span { color: var(--orange); }
+
+.section-line {
+  width: 60px; height: 3px;
+  background: var(--orange);
+  border-radius: 2px;
+  margin: 0 auto 60px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.skill-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  padding: 28px 20px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.skill-card:hover {
+  border-color: var(--orange);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(255, 107, 0, 0.15);
+}
+
+.skill-card i {
+  font-size: 2rem;
+  margin-bottom: 12px;
+  color: var(--orange);
+}
+
+.skill-card p {
+  font-size: 0.85rem;
+  color: var(--gray);
+  font-weight: 500;
+}
+
+/* ── EDUCATION ── */
+#education {
+  min-height: 100vh;
+  padding: 100px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timeline {
+  width: 100%;
+  max-width: 700px;
+  position: relative;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 20px; top: 0; bottom: 0;
+  width: 2px;
+  background: rgba(255, 107, 0, 0.2);
+}
+
+.timeline-item {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.timeline-dot {
+  flex: 0 0 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 2px solid var(--orange);
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--orange);
+  font-size: 1rem;
+  z-index: 1;
+}
+
+.timeline-content {
+  background: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  padding: 22px 26px;
+  flex: 1;
+  transition: border-color 0.3s;
+}
+
+.timeline-content:hover { border-color: var(--orange); }
+
+.timeline-content h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.timeline-content .school {
+  color: var(--orange);
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+}
+
+.timeline-content .year {
+  color: var(--gray);
+  font-size: 0.8rem;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav { padding: 16px 24px; }
+  nav ul { gap: 20px; }
+  #home {
+    flex-direction: column;
+    padding: 100px 24px 60px;
+    gap: 40px;
+    text-align: center;
+  }
+  .socials { justify-content: center; }
+  #skill, #education { padding: 80px 24px; }
+}
